@@ -1,0 +1,10 @@
+version: "3.7"
+
+services: 
+  app:
+    build: .                # Realiza a build do Dockerfile
+    container_name: rentx   # Define o nome do container
+    ports:          
+      - 3333:3333           # Define as portas do [localhost]:[container]
+    volumes:
+      - .:/usr/app          # Copia tudo de . para /usr/app
