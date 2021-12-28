@@ -1,10 +1,33 @@
 version: "3.7"
 
 services: 
+  database_ignite:
+    image: postgres
+    container_name: database_ignite
+    restart: always         # Sempre reiniciar se for parado
+    ports:
+      - 5432:5432
+    environment:            # Define variáveis de ambiente
+      - POSTGRES_USER=docker
+      - POSTGRES_PASSWORD=ignite
+      - POSTGRES_DB=rentx
+    volumes:
+      - pgdata:/data/postgres 
+
   app:
     build: .                # Realiza a build do Dockerfile (sudo docker build -t nome_da_imagem .)
     container_name: rentx   # Define o nome do container
     ports:          
       - 3333:3333           # Define as portas do [localhost]:[container]
+      - 9229:9229           # Porta para debug
     volumes:
       - .:/usr/app          # Copia tudo de . para /usr/app
+    links:
+      - database_ignite
+    depends_on:
+      - database_ignite
+    
+
+volumes:
+  pgdata:
+    driver: local
