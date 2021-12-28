@@ -2,7 +2,7 @@ version: "3.7"
 
 services: 
   app:
-    build: .                # Realiza a build do Dockerfile
+    build: .                # Realiza a build do Dockerfile (sudo docker build -t nome_da_imagem .)
     container_name: rentx   # Define o nome do container
     ports:          
       - 3333:3333           # Define as portas do [localhost]:[container]
