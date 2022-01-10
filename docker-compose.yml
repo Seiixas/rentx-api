@@ -3,7 +3,7 @@ version: "3.7"
 services: 
   database_ignite:
     image: postgres
-    container_name: database_ignite
+    container_name: rentx_db
     restart: always         # Sempre reiniciar se for parado
     ports:
       - 5432:5432
@@ -16,7 +16,7 @@ services:
 
   app:
     build: .                # Realiza a build do Dockerfile (sudo docker build -t nome_da_imagem .)
-    container_name: rentx   # Define o nome do container
+    container_name: rentx_app   # Define o nome do container
     ports:          
       - 3333:3333           # Define as portas do [localhost]:[container]
       - 9229:9229           # Porta para debug
