@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from 'uuid';
 import createConnecton from '../index';
 
 async function create() {
-  const connection = await createConnecton();
+  const connection = await createConnecton('localhost');
 
   const id = uuidv4();
   const password = await hash('admin', 8);

@@ -11,7 +11,7 @@ import { router } from './routes';
 import '@shared/container';
 import { AppError } from '@shared/errors/AppError';
 
-createConnection('localhost');
+createConnection();
 
 const app = express();
 
